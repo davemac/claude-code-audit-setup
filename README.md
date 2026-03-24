@@ -4,6 +4,20 @@ A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill that perfo
 
 Run `/audit-setup` to eliminate bloat, resolve conflicts, surface stale rules, and get a prioritised changelist you can act on.
 
+## Why use this
+
+Claude Code configurations grow organically. You add a rule after a bad output, copy a convention from a blog post, tweak settings across projects, and accumulate memories over dozens of conversations. Over time, the result is a setup that costs you tokens and quality without you realising it.
+
+**Wasted context budget.** Every rule loaded into context competes for the same token window as your actual code. Dead-weight instructions — defaults Claude already follows, duplicates across files, references to tools you uninstalled months ago — consume space that could be used for longer files, deeper reasoning, or more tool calls. A bloated config quietly degrades every conversation.
+
+**Conflicting instructions produce inconsistent behaviour.** When your global CLAUDE.md says one thing and a project-level file says the opposite, Claude has to guess which one you meant. The result is unpredictable: sometimes it follows one rule, sometimes the other, and you can't tell why outputs vary between sessions.
+
+**Stale rules cause silent failures.** A rule that references a file path, API, or framework that no longer exists doesn't throw an error — it just gets ignored, or worse, nudges Claude toward patterns that no longer apply to your codebase.
+
+**Memory drift.** Auto-saved memories accumulate across conversations with no built-in review process. They can duplicate your CLAUDE.md rules (doubling the token cost for zero benefit), reference outdated project state, or contradict each other when saved weeks apart.
+
+Running `/audit-setup` periodically catches all of this and gives you a concrete, prioritised list of what to fix — rather than a vague sense that "something feels off" about your outputs.
+
 ## What it audits
 
 | Source | What it checks |
