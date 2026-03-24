@@ -10,7 +10,7 @@ Claude Code configurations grow organically. You add a rule after a bad output, 
 
 **Wasted context budget.** Every rule loaded into context competes for the same token window as your actual code. Dead-weight instructions — defaults Claude already follows, duplicates across files, references to tools you uninstalled months ago — consume space that could be used for longer files, deeper reasoning, or more tool calls. A bloated config quietly degrades every conversation.
 
-**Conflicting instructions produce inconsistent behaviour.** When your global CLAUDE.md says one thing and a project-level file says the opposite, Claude has to guess which one you meant. The result is unpredictable: sometimes it follows one rule, sometimes the other, and you can't tell why outputs vary between sessions.
+**Conflicting instructions produce inconsistent behaviour.** When your global CLAUDE.md says one thing and a project-level file says the opposite, Claude has to guess which one you meant. The result is unpredictable: sometimes it follows one rule, sometimes the other, and you can't tell why outputs vary between sessions. Settings conflicts are especially hard to spot — you might allow a set of bash commands globally, then a project-level settings file restricts or re-allows the same commands differently, and you end up with permission prompts you don't expect or auto-approvals you didn't intend.
 
 **Stale rules cause silent failures.** A rule that references a file path, API, or framework that no longer exists doesn't throw an error — it just gets ignored, or worse, nudges Claude toward patterns that no longer apply to your codebase.
 
