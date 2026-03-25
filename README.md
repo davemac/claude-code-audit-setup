@@ -51,6 +51,8 @@ Every rule, instruction, and preference is assessed against six questions:
 6. **Global vs. project layer issues** — Rules in the wrong layer
 7. **Memory health** — Stale, redundant, orphaned, or broken memory entries
 8. **Changelist for CLAUDE.md** — Diff-style remove/merge/reword/reorder
+9. **Savings table** — Token cost per action item with totals, sorted by largest saving
+10. **Executive summary** — Prioritised action list, one line per item, with token savings
 
 ## Installation
 

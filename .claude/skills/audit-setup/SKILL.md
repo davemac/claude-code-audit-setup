@@ -73,6 +73,7 @@ Estimate the approximate token cost of the user's full configuration (all loaded
 - What percentage of the setup is actionable vs. dead weight
 - Which files or sections are the biggest offenders
 - Whether the skill description budget (~2% of context window) is being pressured
+- **Per-item token estimates**: for each issue you identify (cuts, merges, rewrites, memory cleanup), estimate the tokens that would be saved. These feed into the savings table in the output.
 
 ## Phase 4: Output
 
@@ -124,6 +125,33 @@ Rather than a full rewrite, provide a **diff-style changelist**:
 - Suggested **reordering** if the current structure buries important rules
 
 This applies to both global and project CLAUDE.md if both exist.
+
+### 9. Savings Table
+
+A markdown table summarising the token cost of every recommended change. This gives the user a clear picture of the ROI for each action.
+
+| # | Action | File | Tokens Saved | % of Config |
+|---|--------|------|-------------|-------------|
+| 1 | [short description of change] | [file path] | ~[n] | [x%] |
+| ... | ... | ... | ... | ... |
+| | **Total** | | **~[n]** | **[x%]** |
+
+- One row per recommended cut, merge, rewrite, or memory cleanup
+- Sort by tokens saved (largest first)
+- Include a totals row at the bottom
+- Token estimates don't need to be exact — order-of-magnitude is fine. Use word count as a proxy (1 word ≈ 1.3 tokens).
+
+### 10. Executive Summary
+
+This is the last thing the user sees — it must be immediately actionable. Maximum 10 lines.
+
+Format as a numbered list of actions in priority order. Each item is a single line:
+`[n]. [verb] [what] in [file] (~[tokens] saved)`
+
+End with a total line:
+`Total estimated savings: ~[n] tokens ([x%] of your loaded config)`
+
+Frame as direct instructions ("Remove…", "Merge…", "Delete…"), not findings ("I found…", "There are…").
 
 ## Guidelines
 
